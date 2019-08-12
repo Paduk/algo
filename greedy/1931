@@ -1,0 +1,41 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+typedef struct __arr{
+	int st;
+	int end;
+} _arr;
+_arr arr[100010];
+
+	
+bool cmp(const _arr &a, const _arr &b) {
+    if(a.end == b.end) {
+        return a.st < b.st;
+    } else {
+        return a.end < b.end;
+    }
+}
+
+int main(){
+	int N;
+	int cnt, finish_pt;
+	int i;
+	cin >> N;
+	for(i=0;i<N;i++)
+		cin >> arr[i].st >> arr[i].end;		
+
+	sort(arr, arr + N, cmp);
+	
+	finish_pt = arr[0].end;
+	cnt = 0;
+	finish_pt = 0;
+	for(i=0;i<N;i++){
+		if(arr[i].st >= finish_pt){
+			finish_pt = arr[i].end;
+			cnt++;
+		}
+	}
+	cout << cnt;
+	return 0;
+}

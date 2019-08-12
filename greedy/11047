@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+	int arr[20];
+	int V,N;
+	int i;
+	int sum = 0;
+	cin >> N >> V;
+
+	for(i=N-1;i>=0;i--)
+		cin >> arr[i];
+	
+	for(i=0;i<N;i++){
+		if(V/arr[i] < 0) continue;
+		else if(V%arr[i] == 0) {
+			sum += V/arr[i];
+			break;
+		} else{
+			sum += V/arr[i];
+			V = V%arr[i];
+		}
+	}
+
+	cout << sum;
+	return 0;
+}

@@ -1,0 +1,26 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int arr[100010];
+
+bool cmp(const int &a, const int &b) {
+    return a < b;
+}
+int main(){
+	int i;
+	int k, w, val;
+	int maxW = 0;
+	cin >> k;
+	for(i=0;i<k;i++){
+		cin >> arr[i];
+	}
+	sort(arr,arr+k,cmp);
+
+	for(i=0;i<k;i++){
+		w = (arr[i] * (k-i));
+		if(w > maxW) maxW = w;
+	}
+	cout << maxW;
+	return 0;
+}
